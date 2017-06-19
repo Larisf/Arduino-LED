@@ -3,30 +3,29 @@ Adafruit_WS2801 strip = Adafruit_WS2801(N_LEDS, DATA, CLOCK);
 Adafruit_ADS1115 ads(0x48);
 void setup()
 {
-   pinMode(BETRIEB_LED, OUTPUT);
-   pinMode(TASTER, INPUT_PULLUP);
-   strip.begin();
-   strip.show();
-   Serial.begin(9600);
-   ads.begin();
-   attachInterrupt(digitalPinToInterrupt(TASTER),interrupt_0,FALLING);
+  pinMode(BETRIEB_LED, OUTPUT);
+  pinMode(TASTER, INPUT_PULLUP);
+  strip.begin();
+  strip.show();
+  Serial.begin(9600);
+  ads.begin();
+  attachInterrupt(digitalPinToInterrupt(TASTER), interrupt_0, FALLING);
 }
 
-void loop() 
+void loop()
 {
   //test();
   programm();
 }
 void programm()
 {
-  digitalWrite(BETRIEB_LED, HIGH);
-  if(counter == 0)
-  lauflicht();
+  if (counter == 9)
+    digitalWrite(BETRIEB_LED, LOW);
   else
-  {
-  geschaltet();
-  pressed = 0;
- }
+    digitalWrite(BETRIEB_LED, HIGH);
+    geschaltet();
+    pressed = 0;
+  
 }
 void test()
 {
